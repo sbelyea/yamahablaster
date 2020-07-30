@@ -44,6 +44,11 @@ def INPUT_HDMI1():
     os.system('irsend send_once YAMAHA-RAV293 INPUT_AUDIO2')
     return "Input selected: AUDIO2"
 
+@route('/INPUT_TUNER')
+def INPUT_HDMI1():
+    os.system('irsend send_once YAMAHA-RAV293 INPUT_TUNER')
+    return "Input selected: TUNER"
+
 run(host='192.168.1.4', port=8080, debug=True)
 
 # LIRC Commands for RAV293 Remote
