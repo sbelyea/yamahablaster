@@ -28,6 +28,12 @@ def volumedown():
     os.system('irsend send_once YAMAHA-RAV293 KEY_VOLUMEDOWN')
     return "Volume decreased by 0.5db"
 
+@route('/VOL_MUTE')
+def volumedown():
+    os.system('irsend send_once YAMAHA-RAV293 VOL_MUTE')
+    return "Mute state toggled"
+
+
 @route('/INPUT_HDMI1')
 def INPUT_HDMI1():
     os.system('irsend send_once YAMAHA-RAV293 INPUT_HDMI1')
@@ -58,7 +64,7 @@ def INPUT_HDMI1():
 def send_static(filename):
     return static_file(filename, root='/home/pi/bottle/static/')
 
-run(host='192.168.1.4', port=8080, debug=True)
+run(host='0.0.0.0', port=8080, debug=True)
 
 # LIRC Commands for RAV293 Remote
 #INPUT_HDMI1              0x5EA1E21C
