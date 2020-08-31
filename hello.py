@@ -1,9 +1,13 @@
-from bottle import route, run, request, template
+from bottle import route, run, request, template, static_file
 import os
 
 @route('/')
 def default():
-    return "Default landing page"
+    return 'Default landing page'
+
+@route('/controller')
+def controller():
+    return template('controller')
 
 @route('/hello')
 def hello():
@@ -48,6 +52,11 @@ def INPUT_HDMI1():
 def INPUT_HDMI1():
     os.system('irsend send_once YAMAHA-RAV293 INPUT_TUNER')
     return "Input selected: TUNER"
+
+
+@route('/static/<filename:path>')
+def send_static(filename):
+    return static_file(filename, root='/home/pi/bottle/static/')
 
 run(host='192.168.1.4', port=8080, debug=True)
 
